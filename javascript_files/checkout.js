@@ -1,10 +1,14 @@
 import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
-function AddingCartProducts() {
+
+const now = dayjs();
+let formattedDate = now.format('dddd, MMMM D')
+function AddingCartProducts(formattedDate) {
     let allProducts = "";
     cart.forEach((item) => {
         let matchingItem=[]
         let cartItem=[]
+        let radioName = `delivery-option-${item.id}`
         products.forEach(product => {
             if (item.id === product.id) {
                 matchingItem.push(product);
@@ -16,7 +20,7 @@ function AddingCartProducts() {
             const item_html = `
                 <div class="cart-item-container">
             <div class="delivery-date">
-              Delivery date: Tuesday, June 21
+              Delivery date: ${formattedDate}
             </div>
 
             <div class="cart-item-details-grid">
@@ -50,10 +54,10 @@ function AddingCartProducts() {
                 <div class="delivery-option">
                   <input type="radio" checked
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="${radioName}">
                   <div>
                     <div class="delivery-option-date">
-                      Tuesday, June 21
+                      Saturday, June 18
                     </div>
                     <div class="delivery-option-price">
                       FREE Shipping
@@ -63,7 +67,7 @@ function AddingCartProducts() {
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="${radioName}">
                   <div>
                     <div class="delivery-option-date">
                       Wednesday, June 15
@@ -76,7 +80,7 @@ function AddingCartProducts() {
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="${radioName}">
                   <div>
                     <div class="delivery-option-date">
                       Monday, June 13
@@ -101,4 +105,29 @@ function AddingCartProducts() {
   
     
   }
-  AddingCartProducts()
+  AddingCartProducts(formattedDate)
+
+
+
+
+
+
+
+
+// Using dayjs() will give you the current date and time
+// const now = dayjs();
+// console.log(now.format()); // '2024-12-09T12:34:56+00:00'
+// const now = dayjs();
+// console.log(now.format('YYYY-MM-DD')); // '2024-12-09'
+// console.log(now.format('dddd, MMMM D')); // 'December 9, 2024'
+// console.log(now.format('dddd, MMMM D, YYYY h:mm A')); // 'Monday, December 9, 2024 12:34 PM'
+
+
+
+
+
+
+
+
+
+
