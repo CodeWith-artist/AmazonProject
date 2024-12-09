@@ -1,5 +1,6 @@
-import { cart } from "../data/cart.js";
+import { cart, saveCartToLocalStorage } from "../data/cart.js";
 import { products } from "../data/products.js";
+
 
 // adding products to cart through javascript
 function AddingProductsToPage() {
@@ -89,9 +90,12 @@ function adding_products_to_cart() {
             id: productId,
             quantity: 1,
           });
+          
         }
+        saveCartToLocalStorage();
+        
 
-        console.log(cart);
+        
       
     });
   });
