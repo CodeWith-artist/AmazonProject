@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export const cart = [
     {
         id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -38,3 +39,8 @@ export function adding_products_to_cart() {
       });
     });
   }
+=======
+export let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+export const saveCartToLocalStorage = () => localStorage.setItem("cart", JSON.stringify(cart));
+>>>>>>> bb211051cf6cf6ac150dfd3b0215dc1836a9d82e
