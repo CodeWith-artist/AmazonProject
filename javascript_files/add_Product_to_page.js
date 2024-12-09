@@ -1,6 +1,6 @@
 import { cart, saveCartToLocalStorage } from "../data/cart.js";
 import { products } from "../data/products.js";
-import { adding_products_to_cart } from "../data/cart.js";
+
 
 
 // adding products to cart through javascript
@@ -70,9 +70,6 @@ function AddingProductsToPage() {
 AddingProductsToPage();
 
 // adding products to cart
-<<<<<<< HEAD
-adding_products_to_cart()
-=======
 
 function adding_products_to_cart() {
   const addToCartButton = document.querySelectorAll(".js-add-to-cart-btn");
@@ -106,4 +103,3 @@ function adding_products_to_cart() {
 }
 
 adding_products_to_cart();
->>>>>>> bb211051cf6cf6ac150dfd3b0215dc1836a9d82e
