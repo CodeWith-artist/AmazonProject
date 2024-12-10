@@ -1,5 +1,6 @@
 import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
+import deleveryIdOptions from "../data/deliveryIdOptions.js";
 
 const now = dayjs();
 let formattedDate = now.format('dddd, MMMM D')
@@ -51,45 +52,9 @@ function AddingCartProducts(formattedDate) {
                 <div class="delivery-options-title">
                   Choose a delivery option:
                 </div>
-                <div class="delivery-option">
-                  <input type="radio" checked
-                    class="delivery-option-input"
-                    name="${radioName}">
-                  <div>
-                    <div class="delivery-option-date">
-                      Saturday, June 18
-                    </div>
-                    <div class="delivery-option-price">
-                      FREE Shipping
-                    </div>
-                  </div>
-                </div>
-                <div class="delivery-option">
-                  <input type="radio"
-                    class="delivery-option-input"
-                    name="${radioName}">
-                  <div>
-                    <div class="delivery-option-date">
-                      Wednesday, June 15
-                    </div>
-                    <div class="delivery-option-price">
-                      $4.99 - Shipping
-                    </div>
-                  </div>
-                </div>
-                <div class="delivery-option">
-                  <input type="radio"
-                    class="delivery-option-input"
-                    name="${radioName}">
-                  <div>
-                    <div class="delivery-option-date">
-                      Monday, June 13
-                    </div>
-                    <div class="delivery-option-price">
-                      $9.99 - Shipping
-                    </div>
-                  </div>
-                </div>
+                ${deliveryOption(deleveryIdOptions, radioName)}
+                
+                
               </div>
             </div>
           </div>
@@ -108,6 +73,52 @@ function AddingCartProducts(formattedDate) {
   AddingCartProducts(formattedDate)
 
 
+  function deliveryOption(deleveryIdOptions , radioName) {
+    
+    
+    let html = "";
+    deleveryIdOptions.forEach((option) => {
+      const today = dayjs();
+      let input = '';
+      const deliveryDate = today.add(option.deleveryTime, 'day');
+      const formattedDate = deliveryDate.format('dddd, MMMM D');
+
+      if (option.price === 0) {
+        option.innerHTML = "Free";
+        input = 'checked';
+      }else{
+        option.innerHTML = `$${option.price} - shipping`
+      }
+
+      const deliveryOptionHtml = `
+        <div class="delivery-option">
+          <input type="radio" 
+            class="delivery-option-input" ${input}
+            name="delivery-option-${radioName}">
+          <div>
+            <div class="delivery-option-date">
+              ${formattedDate}
+            </div>
+            <div class="delivery-option-price">
+              ${option.innerHTML}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      
+      html += deliveryOptionHtml;
+      console.log(deleveryIdOptions);
+      
+      
+      
+    });
+    return html;
+    
+    
+  }
+
+  
 
 
 
