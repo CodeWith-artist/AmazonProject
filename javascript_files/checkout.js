@@ -78,13 +78,13 @@ function AddingCartProducts() {
     let html = "";
     deleveryIdOptions.forEach((option) => {
       const today = dayjs();
-      let input = '';
+      
       const deliveryDate = today.add(option.deleveryTime, 'day');
       const formattedDate = deliveryDate.format('dddd, MMMM D');
 
       if (option.price === 0) {
         option.innerHTML = "Free";
-        input = 'checked';
+        
       }else{
         option.innerHTML = `$${option.price} - shipping`
       }
@@ -92,7 +92,7 @@ function AddingCartProducts() {
       const deliveryOptionHtml = `
         <div class="delivery-option">
           <input type="radio" 
-            class="delivery-option-input" ${input}
+            class="delivery-option-input" 
             name="delivery-option-${radioName}">
           <div>
             <div class="delivery-option-date">
