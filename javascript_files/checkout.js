@@ -2,9 +2,8 @@ import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import deleveryIdOptions from "../data/deliveryIdOptions.js";
 
-const now = dayjs();
-let formattedDate = now.format('dddd, MMMM D')
-function AddingCartProducts(formattedDate) {
+
+function AddingCartProducts() {
     let allProducts = "";
     cart.forEach((item) => {
         let matchingItem=[]
@@ -21,7 +20,7 @@ function AddingCartProducts(formattedDate) {
             const item_html = `
                 <div class="cart-item-container">
             <div class="delivery-date">
-              Delivery date: ${formattedDate}
+              Delivery date: 
             </div>
 
             <div class="cart-item-details-grid">
@@ -70,7 +69,7 @@ function AddingCartProducts(formattedDate) {
   
     
   }
-  AddingCartProducts(formattedDate)
+  AddingCartProducts()
 
 
   function deliveryOption(deleveryIdOptions , radioName) {
