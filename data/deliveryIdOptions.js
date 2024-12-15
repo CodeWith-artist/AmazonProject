@@ -1,16 +1,16 @@
 const deleveryIdOptions = [
     {
-        id: 1,
+        deleveryid: 1,
         deleveryTime: "7",
         price : 0
     },
     {
-        id: 2,
+        deleveryid: 2,
         deleveryTime: "5",
         price : 10
     },
     {
-        id: 3,
+        deleveryid: 3,
         deleveryTime: "3",
         price : 20
     }

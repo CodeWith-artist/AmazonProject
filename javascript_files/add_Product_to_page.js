@@ -90,6 +90,7 @@ function adding_products_to_cart() {
           cart.push({
             id: productId,
             quantity: 1,
+            
           });
           
         }
