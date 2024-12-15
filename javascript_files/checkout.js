@@ -2,9 +2,8 @@ import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import deleveryIdOptions from "../data/deliveryIdOptions.js";
 
-const now = dayjs();
-let formattedDate = now.format('dddd, MMMM D')
-function AddingCartProducts(formattedDate) {
+
+function AddingCartProducts() {
     let allProducts = "";
     cart.forEach((item) => {
         let matchingItem=[]
@@ -21,7 +20,7 @@ function AddingCartProducts(formattedDate) {
             const item_html = `
                 <div class="cart-item-container">
             <div class="delivery-date">
-              Delivery date: ${formattedDate}
+              Delivery date: 
             </div>
 
             <div class="cart-item-details-grid">
@@ -70,7 +69,7 @@ function AddingCartProducts(formattedDate) {
   
     
   }
-  AddingCartProducts(formattedDate)
+  AddingCartProducts()
 
 
   function deliveryOption(deleveryIdOptions , radioName) {
@@ -79,13 +78,13 @@ function AddingCartProducts(formattedDate) {
     let html = "";
     deleveryIdOptions.forEach((option) => {
       const today = dayjs();
-      let input = '';
+      
       const deliveryDate = today.add(option.deleveryTime, 'day');
       const formattedDate = deliveryDate.format('dddd, MMMM D');
 
       if (option.price === 0) {
         option.innerHTML = "Free";
-        input = 'checked';
+        
       }else{
         option.innerHTML = `$${option.price} - shipping`
       }
@@ -93,7 +92,7 @@ function AddingCartProducts(formattedDate) {
       const deliveryOptionHtml = `
         <div class="delivery-option">
           <input type="radio" 
-            class="delivery-option-input" ${input}
+            class="delivery-option-input" 
             name="delivery-option-${radioName}">
           <div>
             <div class="delivery-option-date">
